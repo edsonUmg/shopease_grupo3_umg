@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product.service';
-import { Product } from '../models/product.model';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss'],
+  styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-  products: Product[] = [];
+  productos: any[] = []; // Aquí cargarás los productos desde el JSON
 
-  constructor(private productService: ProductService) {}
+  constructor(private cartService: CartService) {}
 
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
-    });
+  ngOnInit() {
+    // Simulación de carga desde JSON (puedes reemplazarlo con una petición HTTP)
+    this.productos = [
+      { nombre: 'iPhone 14 Pro', precio: 1499, imagen: 'iphone14pro.png' },
+      { nombre: 'iPhone 11', precio: 550, imagen: 'iphone11.png' }
+    ];
+  }
+
+  agregarAlCarrito(producto: any) {
+    this.cartService.agregarProducto(producto);
+    alert(`${producto.nombre} agregado al carrito`);
   }
 }
