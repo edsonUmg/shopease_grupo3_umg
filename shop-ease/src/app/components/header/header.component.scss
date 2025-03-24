@@ -1,0 +1,29 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid gray;
+
+  .search {
+    position: relative;
+
+    i {
+      position: absolute;
+      top: 20%;
+      right: 5%;
+    }
+  }
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+
+    li {
+      list-style-type: none;
+      text-decoration: none;
+    }
+  }
+}
