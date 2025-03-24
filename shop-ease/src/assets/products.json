@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "name": "Laptop Gamer",
+      "price": 1200,
+      "description": "Laptop potente para gaming y trabajo.",
+      "imageUrl": "assets/images/laptop.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Smartphone Pro",
+      "price": 800,
+      "description": "Celular de última generación con excelente cámara.",
+      "imageUrl": "assets/images/phone.jpg"
+    }
+  ]
+  
