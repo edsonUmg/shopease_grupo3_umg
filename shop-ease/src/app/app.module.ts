@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http'; // <- Mantienes tu cambio
-import { HeaderComponent } from './components/header/header.component'; // <- Mantienes el cambio de tu compañero
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent // <- Asegurar que este componente esté declarado
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
