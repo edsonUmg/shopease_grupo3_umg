@@ -1,2 +1,21 @@
 <router-outlet></router-outlet>
-<p>catalog works!</p>
+<div class="catalog-container">
+    <h2>Catálogo de Productos</h2>
+    <div class="filters">
+      <h4>Filtros</h4>
+      <label>
+        <input type="checkbox" (change)="filtrarPorDisponibilidad($event)">
+        Solo disponibles
+      </label>
+    </div>
+    <div class="product-list">
+      <div class="product-card" *ngFor="let product of productosFiltrados">
+        <img [src]="product.imageUrl" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p><strong>Precio: ${{ product.price }}</strong></p>
+        <button (click)="agregarAlCarrito(product)">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+  

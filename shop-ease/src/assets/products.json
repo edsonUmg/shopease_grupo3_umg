@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "GoPro Hero 13",
+    "description": "Cámara de acción con estabilización avanzada.",
+    "price": 399.99,
+    "imageUrl": "https://gopro.com/on/demandware.static/-/Sites-gopro-products/default/dw33f29c66/images/Product%20Images/mounts%20&%20accessories/AFFRC-002/plp-product-card-hero-protective-sleeve.png",
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "Laptop Gamer ASUS",
+    "description": "Laptop con procesador Intel Core i7, 16GB RAM, SSD 512GB",
+    "price": 1299.99,
+    "imageUrl": "https://gopro.com/on/demandware.static/-/Sites-gopro-products/default/dw906ed3db/images/Product%20Images/mounts%20&%20accessories/AGXTS-002/plp-product-card-extention-pole.png",  
+    "available": true
+  }
+]
