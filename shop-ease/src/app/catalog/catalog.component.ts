@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model';
 
 @Component({
@@ -11,7 +12,10 @@ export class CatalogComponent implements OnInit {
   productos: Product[] = [];
   productosFiltrados: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data) => {
@@ -20,6 +24,11 @@ export class CatalogComponent implements OnInit {
     });
   }
 
+  agregarAlCarrito(producto: Product): void {
+    this.cartService.agregarProducto(producto);
+    alert(`${producto.name} agregado al carrito`);
+  }
+  
   filtrarPorDisponibilidad(event: any): void {
     if (event.target.checked) {
       this.productosFiltrados = this.productos.filter((p) => p.available);
@@ -27,8 +36,5 @@ export class CatalogComponent implements OnInit {
       this.productosFiltrados = [...this.productos];
     }
   }
-
-  agregarAlCarrito(producto: Product): void {
-    alert(`${producto.name} agregado al carrito`);
-  }
+  
 }

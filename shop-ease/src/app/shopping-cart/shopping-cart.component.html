@@ -1,2 +1,17 @@
 <p>shopping-cart works!</p>
 <router-outlet></router-outlet>
+<div class="cart-container">
+    <h2>🛒 Carrito de Compras</h2>
+    <div *ngIf="carrito.length === 0">
+      <p>Tu carrito está vacío.</p>
+    </div>
+    <div *ngFor="let product of carrito" class="cart-item">
+      <img [src]="product.imageUrl" alt="{{ product.name }}">
+      <div>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p><strong>Precio: ${{ product.price }}</strong></p>
+      </div>
+    </div>
+    <button (click)="limpiarCarrito()">🗑 Vaciar Carrito</button>
+  </div>
