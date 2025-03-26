@@ -11,7 +11,7 @@ import { Product } from '../models/product.model';
 export class CatalogComponent implements OnInit {
   productos: Product[] = [];
   productosFiltrados: Product[] = [];
-
+  favorites: number[] = [];
   constructor(
     private productService: ProductService,
     private cartService: CartService
@@ -22,6 +22,18 @@ export class CatalogComponent implements OnInit {
       this.productos = data;
       this.productosFiltrados = data;
     });
+  }
+
+  toggleFavorite(product: any): void {
+    const index = this.favorites.indexOf(product.id);
+    if (index === -1) {
+      this.favorites.push(product.id);
+    } else {
+      this.favorites.splice(index, 1);
+    }
+  }
+  isFavorite(product: any): boolean {
+    return this.favorites.includes(product.id);
   }
 
   agregarAlCarrito(producto: Product): void {

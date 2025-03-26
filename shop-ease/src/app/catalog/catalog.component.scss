@@ -17,29 +17,41 @@
   .product-card {
     border: 1px solid #ddd;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    position: relative;
     text-align: center;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
     img {
       width: 100%;
       height: auto;
       border-radius: 10px;
     }
+    .favorite-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #999;
+    }
+    .favorite-icon .fas {
+      color: red;
+    }
 
     button {
-      background-color: #007bff;
+      background-color: black;
       color: white;
-      border: none;
       padding: 10px;
+      border: none;
+      width: 100%;
       cursor: pointer;
       border-radius: 5px;
-      width: 100%;
+      margin-top: 10px;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #333;
     }
   }
 }

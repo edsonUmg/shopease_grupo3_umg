@@ -9,12 +9,15 @@
     </label>
   </div>
   <div class="product-list">
-    <div class="product-card" *ngFor="let product of productosFiltrados">
-      <img [src]="product.imageUrl" alt="{{ product.name }}">
+    <div class="product-card" *ngFor="let product of productos">
+      <div class="favorite-icon" (click)="toggleFavorite(product)">
+        <i [class]="isFavorite(product) ? 'fas fa-heart' : 'far fa-heart'"></i>
+      </div>
+      <img [src]="product.imageUrl" alt="{{ product.name }}" />
       <h3>{{ product.name }}</h3>
-      <p>{{ product.description }}</p>
-      <p><strong>Precio: ${{ product.price }}</strong></p>
-      <button (click)="agregarAlCarrito(product)">🛒 Agregar al carrito</button>
+      <p>{{ product.price | currency }}</p>
+      <button class="buy-now">Buy Now</button>
     </div>
+    
   </div>
 </div>
