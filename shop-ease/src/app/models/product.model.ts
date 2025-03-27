@@ -5,6 +5,7 @@
     description: string;
     price: number;
     available: boolean;
+    availably:string;
     category: string;
     imageUrl: string;
   }
