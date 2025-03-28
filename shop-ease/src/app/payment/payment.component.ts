@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { OrderService } from './services/order/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -19,7 +20,9 @@ export class PaymentComponent implements OnInit {
   subTotal: number = 0;
   taxes: number = 0;
 
-  constructor(private fb: FormBuilder, private orderService: OrderService) { }
+  constructor(private fb: FormBuilder, private orderService: OrderService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.orderService.getOrder().subscribe(order => {
@@ -51,11 +54,8 @@ export class PaymentComponent implements OnInit {
     this.active += 1;
   }
 
-  pasoAnterior(): void {
-
-  }
-
-  enviarFormulario(): void {
-
+  payment(): void {
+    alert('Compra realizada exitosamente');
+    this.router.navigate(['/']);
   }
 }
