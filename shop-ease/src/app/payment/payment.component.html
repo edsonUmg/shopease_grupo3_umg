@@ -1,2 +1,93 @@
 <router-outlet></router-outlet>
-<p>payment works!</p>
+<section class="mainPayment">
+  <section class="steps">
+    <div class="stepContainer">
+      <p-button (click)="active = 0" [rounded]="true" label="1" styleClass="w-8 h-8 p-0" [outlined]="active !== 0" />
+      <p-button (click)="active = 1" [rounded]="true" label="2" styleClass="w-8 h-8 p-0" [outlined]="active !== 1" />
+      <p-button (click)="active = 2" [rounded]="true" label="3" styleClass="w-8 h-8 p-0" [outlined]="active !== 2" />
+    </div>
+    <p-steps [activeIndex]="active" [model]="items" />
+  </section>
+
+  <section class="content">
+    <div [ngSwitch]="active">
+      <div *ngSwitchCase="0">
+        <form class="formStep1" [formGroup]="form">
+          <div class="p-fluid">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" id="nombre" formControlName="direccion" pInputText />
+          </div>
+          <button type="button" class="btn btn-dark rounded-pill" (click)="siguientePaso()">Siguiente</button>
+        </form>
+      </div>
+      <div *ngSwitchCase="1">
+        <form class="formStep1" [formGroup]="form">
+          <div class="p-fluid">
+            <label for="nombre">Dirección de envío</label>
+            <input class="form-control" type="text" id="nombre" formControlName="envio" pInputText />
+          </div>
+          <button type="button" class="btn btn-dark rounded-pill" (click)="siguientePaso()">Siguiente</button>
+        </form>
+      </div>
+      <div class="payment" *ngSwitchCase="2">
+        <section class="payment-summary">
+          <h1>Summary</h1>
+          <section *ngIf="order" class="product-list">
+            <ng-container *ngFor="let product of order.products">
+              <shopease-product-view [product]="product"></shopease-product-view>
+            </ng-container>
+          </section>
+          <section class="order-detail">
+            <div class="data">
+              <label for="">Address:</label>
+              <span>{{ form.get('direccion')?.value }}</span>
+            </div>
+
+            <div class="data">
+              <label for="">Shipping method:</label>
+              <span>{{ form.get('envio')?.value }}</span>
+            </div>
+
+            <div class="data">
+              <strong>Subtotal:</strong>
+              <strong>${{ subTotal | number: '1.2-2' }}</strong>
+            </div>
+
+            <div class="data">
+              <strong>Estimated Tax:</strong>
+              <strong>${{ taxes | number: '1.2-2' }}</strong>
+            </div>
+
+            <div class="data">
+              <strong>Total:</strong>
+              <strong>${{ total | number: '1.2-2' }}</strong>
+            </div>
+
+          </section>
+        </section>
+        <section class="payment-data">
+          <h1>Payment</h1>
+          <section class="credit-card">
+            <div class="card-number">XXXX - XXXX - XXXX - 4178</div>
+            <div class="card-holder">John Doe</div>
+            <img src="assets/mastercard.webp" alt="Mastercard Logo" class="mastercard-logo">
+          </section>
+          <section class="card-data">
+            <form class="formStep3" [formGroup]="form">
+              <input class="form-control" placeholder="Cardholder Name" type="text" id="nombre" formControlName="cardName" pInputText />
+              <input class="form-control" placeholder="Card Number" type="text" id="nombre" formControlName="cardNumber" pInputText />
+              <div class="info">
+                <input class="form-control" placeholder="Exp.Date" type="text" id="nombre" formControlName="expDate" pInputText />
+                <input class="form-control" placeholder="CVV" type="text" id="nombre" formControlName="cvv" pInputText />
+              </div>
+            </form>
+          </section>
+          <section class="action">
+            <input type="button" class="btn btn-light p-3 w-25" value="Back">
+            <input type="button" class="btn btn-dark p-3 w-25" value="Pay">
+          </section>
+        </section>
+      </div>
+    </div>
+  </section>
+</section>
