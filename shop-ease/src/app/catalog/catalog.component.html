@@ -66,10 +66,13 @@
       <img [src]="product.imageUrl" alt="{{ product.name }}">
       <h3><a [routerLink]="['/producto', product.id]">{{ product.name }}</a>
       </h3>
-      <p>{{ product.description }}</p>
       <p><strong>Precio: ${{ product.price }}</strong></p>
       <p>{{ product.availably }}</p>
-      <button (click)="agregarAlCarrito(product)">🛒 Agregar al carrito</button>
+      <button (click)="agregarAlCarrito(product)" 
+        [disabled]="!product.available"
+        class="btn btn-dark">
+  🛒 Agregar al carrito
+</button>
     </div>
   </div>
 </div>
