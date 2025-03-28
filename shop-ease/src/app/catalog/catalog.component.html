@@ -1,56 +1,71 @@
 <router-outlet></router-outlet>
 <div class="catalog-container">
-  <h2>Catálogo de Productos</h2>
 
-  <div class="filters">
-    <h4>Filtros</h4>
+<p>
+  <!-- Nuevo contenedor para alinear contador y filtros -->
+  <div class="filters-container">
+    <div class="filters">
+      <h4>Filtros</h4>
 
-    <!-- Filtro por categoría -->
-    <label>
-      Categoría:
-      <select [(ngModel)]="categoriaSeleccionada" (change)="aplicarFiltros()"><!-- aca marca error en  [(ngModel)]="categoriaSeleccionada"-->
-        <option value="">Todas</option>
-        <option *ngFor="let categoria of categorias" [value]="categoria">
-          {{ categoria }}
-        </option>
-      </select>
-    </label>
+      <label>
+        Categoría:
+        <select [(ngModel)]="categoriaSeleccionada" (change)="aplicarFiltros()">
+          <option value="">Todas</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria">
+            {{ categoria }}
+          </option>
+        </select>
+      </label>
 
-    <!-- Filtro por tipo de uso -->
-    <label>
-      Tipo de Uso:
-      <select [(ngModel)]="tipoUsoSeleccionado" (change)="aplicarFiltros()"><!-- aca marca error en  [(ngModel)]="tipoUsoSeleccionado"-->
-        <option value="">Todos</option>
-        <option *ngFor="let tipo of tipoUsos" [value]="tipo">
-          {{ tipo }}
-        </option>
-      </select>
-    </label>
+      <label>
+        Tipo de Uso:
+        <select [(ngModel)]="tipoUsoSeleccionado" (change)="aplicarFiltros()">
+          <option *ngFor="let tipo of tipoUsos" [value]="tipo">
+            {{ tipo }}
+          </option>
+        </select>
+      </label>
 
-    <!-- Filtro por precio -->
-    <label>
-      Precio Mínimo:
-      <input type="number" [(ngModel)]="precioMin" (input)="aplicarFiltros()" /> <!-- aca marca error en  [(ngModel)]="precioMin"-->
-    </label>
-    <label>
-      Precio Máximo:
-      <input type="number" [(ngModel)]="precioMax" (input)="aplicarFiltros()" /><!-- aca marca error en  [(ngModel)]="precioMax"-->
-    </label>
+      <label>
+        Precio Mínimo:
+        <input type="number" [(ngModel)]="precioMin" (input)="aplicarFiltros()" /> 
+      </label>
+      <label>
+        Precio Máximo:
+        <input type="number" [(ngModel)]="precioMax" (input)="aplicarFiltros()" />
+      </label>
 
-    <!-- Filtro por disponibilidad -->
-    <label>
-      <input type="checkbox" [(ngModel)]="soloDisponibles" (change)="aplicarFiltros()" />    <!-- aca marca error en  [(ngModel)]="soloDisponibles"-->
-      Solo disponibles
-    </label>
+      <label>
+        <input type="checkbox" [(ngModel)]="soloDisponibles" (change)="aplicarFiltros()" />   
+        Solo disponibles
+      </label>
 
-    <!-- Botón para limpiar los filtros -->
-    <button (click)="limpiarFiltros()">Limpiar Filtros</button>
+      <button (click)="limpiarFiltros()">Limpiar Filtros</button>
+    </div>
+
+    <!-- Contador de productos y selector de cantidad -->
+    <div class="product-count">
+      <p>Mostrando {{ productosFiltrados.length }} de {{ productos.length }} productos</p>
+      <label>
+        Mostrar:
+        <select [(ngModel)]="productosPorPagina" (change)="cambiarCantidadProductos()">
+          <option [value]="5">5</option>
+          <option [value]="10">10</option>
+          <option [value]="20">20</option>          
+          <option [value]="30">30</option>
+          <option [value]="productos.length">Todos</option> 
+        </select>
+        por página.
+      </label>
+    </div>
   </div>
 
+  <!-- Lista de productos -->
   <div class="product-list">
-    <div class="product-card" *ngFor="let product of productosFiltrados">
+    <div class="product-card" *ngFor="let product of productosFiltrados | slice:0:productosPorPagina">
       <img [src]="product.imageUrl" alt="{{ product.name }}">
-      <h3>{{ product.name }}</h3>
+      <h3><a [routerLink]="['/producto', product.id]">{{ product.name }}</a>
+      </h3>
       <p>{{ product.description }}</p>
       <p><strong>Precio: ${{ product.price }}</strong></p>
       <p>{{ product.availably }}</p>

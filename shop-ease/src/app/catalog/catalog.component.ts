@@ -20,6 +20,7 @@ export class CatalogComponent implements OnInit {
   precioMin: number | null = null;
   precioMax: number | null = null;
   soloDisponibles: boolean = false;
+  productosPorPagina: number = 10; // Cantidad por defecto
 
   constructor(
     private productService: ProductService,
@@ -33,7 +34,7 @@ export class CatalogComponent implements OnInit {
 
       // Obtener categorías y tipos de uso únicos
       this.categorias = [...new Set(data.map((p) => p.category))];
-      this.tipoUsos = [...new Set(data.map((p) => p['byobActivity']).flat())];//aca marca error en p['BYOB - Activity'])
+      this.tipoUsos = [...new Set(data.map((p) => p['byobActivity']).flat())];
     });
   }
 
@@ -50,7 +51,7 @@ export class CatalogComponent implements OnInit {
         : true;
 
       let cumpleTipoUso = this.tipoUsoSeleccionado
-        ? p['byobActivity']?.includes(this.tipoUsoSeleccionado)// aca marca error en p['BYOB - Activity']
+        ? p['byobActivity']?.includes(this.tipoUsoSeleccionado)
         : true;
 
       let cumpleDisponibilidad = this.soloDisponibles ? p.available : true;
@@ -62,6 +63,10 @@ export class CatalogComponent implements OnInit {
       return cumpleCategoria && cumpleTipoUso && cumpleDisponibilidad && cumplePrecio;
     });
   }
+  cambiarCantidadProductos() {
+    this.aplicarFiltros(); // Recalcula los productos mostrados
+  }
+  
 
   limpiarFiltros(): void {
     this.categoriaSeleccionada = '';

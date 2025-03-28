@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
