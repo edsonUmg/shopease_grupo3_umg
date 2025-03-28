@@ -15,11 +15,11 @@
   }
 
   .product-card {
-    border: 1px solid #ddd;
+    border: 1px solid #8f8f8f;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
-    background-color: #fff;
+    background-color: #eeeded;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
     img {
@@ -29,7 +29,7 @@
     }
 
     button {
-      background-color: #007bff;
+      background-color: #000000;
       color: white;
       border: none;
       padding: 10px;
@@ -39,7 +39,7 @@
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #444444;
     }
   }
 }

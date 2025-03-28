@@ -1,21 +1,59 @@
 <router-outlet></router-outlet>
 <div class="catalog-container">
   <h2>Catálogo de Productos</h2>
+
   <div class="filters">
     <h4>Filtros</h4>
+
+    <!-- Filtro por categoría -->
     <label>
-      <input type="checkbox" (change)="filtrarPorDisponibilidad($event)">
-      Solo disponibles
-      
+      Categoría:
+      <select [(ngModel)]="categoriaSeleccionada" (change)="aplicarFiltros()"><!-- aca marca error en  [(ngModel)]="categoriaSeleccionada"-->
+        <option value="">Todas</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria">
+          {{ categoria }}
+        </option>
+      </select>
     </label>
+
+    <!-- Filtro por tipo de uso -->
+    <label>
+      Tipo de Uso:
+      <select [(ngModel)]="tipoUsoSeleccionado" (change)="aplicarFiltros()"><!-- aca marca error en  [(ngModel)]="tipoUsoSeleccionado"-->
+        <option value="">Todos</option>
+        <option *ngFor="let tipo of tipoUsos" [value]="tipo">
+          {{ tipo }}
+        </option>
+      </select>
+    </label>
+
+    <!-- Filtro por precio -->
+    <label>
+      Precio Mínimo:
+      <input type="number" [(ngModel)]="precioMin" (input)="aplicarFiltros()" /> <!-- aca marca error en  [(ngModel)]="precioMin"-->
+    </label>
+    <label>
+      Precio Máximo:
+      <input type="number" [(ngModel)]="precioMax" (input)="aplicarFiltros()" /><!-- aca marca error en  [(ngModel)]="precioMax"-->
+    </label>
+
+    <!-- Filtro por disponibilidad -->
+    <label>
+      <input type="checkbox" [(ngModel)]="soloDisponibles" (change)="aplicarFiltros()" />    <!-- aca marca error en  [(ngModel)]="soloDisponibles"-->
+      Solo disponibles
+    </label>
+
+    <!-- Botón para limpiar los filtros -->
+    <button (click)="limpiarFiltros()">Limpiar Filtros</button>
   </div>
+
   <div class="product-list">
     <div class="product-card" *ngFor="let product of productosFiltrados">
       <img [src]="product.imageUrl" alt="{{ product.name }}">
       <h3>{{ product.name }}</h3>
       <p>{{ product.description }}</p>
       <p><strong>Precio: ${{ product.price }}</strong></p>
-      <p>{{product.availably}}</p>
+      <p>{{ product.availably }}</p>
       <button (click)="agregarAlCarrito(product)">🛒 Agregar al carrito</button>
     </div>
   </div>
