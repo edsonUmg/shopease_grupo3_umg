@@ -2,7 +2,7 @@
     padding: 20px;
     text-align: center;
   }
-  
+
   .cart-item {
     display: flex;
     align-items: center;
@@ -11,24 +11,44 @@
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
   }
-  
+
   .cart-item img {
     width: 80px;
     height: auto;
     border-radius: 5px;
   }
-  
-  button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+
+  .payment-actions {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      width: 25%;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .continue {
+      background-color: black;
+
+      &:hover {
+        background-color: rgb(77, 77, 77);
+      }
+    }
+
+    .delete {
+      background-color: #dc3545;
+
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
   }
-  
-  button:hover {
-    background-color: #c82333;
-  }
-  

@@ -13,5 +13,8 @@
         <p><strong>Precio: ${{ product.price }}</strong></p>
       </div>
     </div>
-    <button (click)="limpiarCarrito()">🗑 Vaciar Carrito</button>
+    <section class="payment-actions">
+      <button class="continue" (click)="irAPago()">Continuar</button>
+      <button class="delete" (click)="limpiarCarrito()">🗑 Vaciar Carrito</button>
+    </section>
   </div>
