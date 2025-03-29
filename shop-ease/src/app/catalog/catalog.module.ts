@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogComponent } from './catalog.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { CatalogComponent } from './catalog.component';
   ],
   imports: [
     CommonModule,
-    CatalogRoutingModule
+    CatalogRoutingModule,
+    FormsModule 
   ]
 })
 export class CatalogModule { }
