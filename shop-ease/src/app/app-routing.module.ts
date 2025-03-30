@@ -3,21 +3,32 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
+// 1. Importa el componente
+import { UserEditComponent } from './user-management/components/user-edit/user-edit.component';
+import { UserListComponent } from './user-management/components/user-list/user-list.component';
+// 2. Importa el guard
+import { AuthGuard } from '@app/guards/auth.guard';
+
 const routes: Routes = [
   {
-    path: 'user',
-    loadChildren: () =>
-      import('./user-management/user-management.module').then(m => m.UserManagementModule)
+    path: 'user-management',
+    loadChildren: () => import('./user-management/user-management.module').then(m => m.UserManagementModule)
+  },
+  // Ruta para edición de usuario
+  {
+    path: 'user-edit/:id',
+    component: UserEditComponent,
+    canActivate: [AuthGuard] // Protege la ruta
   },
   {
-    path: 'catalog',
-    loadChildren: () =>
-      import('./catalog/catalog.module').then(m => m.CatalogModule)
+    path: 'user-list',
+    component: UserListComponent
   },
 
- {
-   path: 'producto/:id'
-   , component: ProductDetailComponent },
+  {
+    path: 'producto/:id'
+    , component: ProductDetailComponent
+  },
 
   {
     path: 'shopping-cart',
@@ -29,6 +40,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./payment/payment.module').then(m => m.PaymentModule)
   },
+  // Redirección por defecto (opcional)
+  { path: '', redirectTo: '/user-management/login', pathMatch: 'full' },
+  // Ruta comodín (opcional)
+  { path: '**', redirectTo: '/user-management/login' }
 ];
 
 @NgModule({

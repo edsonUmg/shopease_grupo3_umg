@@ -28,7 +28,7 @@
 
       <label>
         Precio Mínimo:
-        <input type="number" [(ngModel)]="precioMin" (input)="aplicarFiltros()" /> 
+        <input type="number" [(ngModel)]="precioMin" (input)="aplicarFiltros()" />
       </label>
       <label>
         Precio Máximo:
@@ -36,7 +36,7 @@
       </label>
 
       <label>
-        <input type="checkbox" [(ngModel)]="soloDisponibles" (change)="aplicarFiltros()" />   
+        <input type="checkbox" [(ngModel)]="soloDisponibles" (change)="aplicarFiltros()" />
         Solo disponibles
       </label>
 
@@ -51,9 +51,9 @@
         <select [(ngModel)]="productosPorPagina" (change)="cambiarCantidadProductos()">
           <option [value]="5">5</option>
           <option [value]="10">10</option>
-          <option [value]="20">20</option>          
+          <option [value]="20">20</option>
           <option [value]="30">30</option>
-          <option [value]="productos.length">Todos</option> 
+          <option [value]="productos.length">Todos</option>
         </select>
         por página.
       </label>
@@ -68,7 +68,7 @@
       </h3>
       <p><strong>Precio: ${{ product.price }}</strong></p>
       <p>{{ product.availably }}</p>
-      <button (click)="agregarAlCarrito(product)" 
+      <button (click)="agregarAlCarrito(product)"
         [disabled]="!product.available"
         class="btn btn-dark">
   🛒 Agregar al carrito
