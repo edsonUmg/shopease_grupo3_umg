@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { UserEditComponent } from './user-management/components/user-edit/user-edit.component';
+import { UserListComponent } from './user-management/components/user-list/user-list.component';
+import { AuthGuard } from '@app/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -29,6 +32,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./payment/payment.module').then(m => m.PaymentModule)
   },
+    // Ruta para edición de usuario
+  {
+    path: 'user-edit/:id',
+    component: UserEditComponent,
+    canActivate: [AuthGuard] // Protege la ruta
+  },
+  {
+    path: 'user-list',
+    component: UserListComponent
+  },
+  // Redirección por defecto (opcional)
+  { path: '', redirectTo: '/user-management/login', pathMatch: 'full' },
+  // Ruta comodín (opcional)
+  { path: '**', redirectTo: '/user-management/login' }
 ];
 
 @NgModule({
