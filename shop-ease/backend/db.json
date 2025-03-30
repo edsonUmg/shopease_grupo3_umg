@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@shopease.com",
+      "password": "$2a$12$N9qo8uLOickgx2ZMRZoMy.Mrq4H7.7eC7W6JgJ8Jz8z5tTJ7X1mWq",
+      "firstName": "Admin",
+      "lastName": "User",
+      "role": "admin",
+      "isActive": true,
+      "createdAt": "2023-01-01T00:00:00.000Z",
+      "phone": "+502 1234 5678"
+    },
+    {
+      "id": 2,
+      "username": "user1",
+      "email": "user1@shopease.com",
+      "password": "$2a$10$N9qo8uLOickgx2ZMRZoMy.Mrq4H7.7eC7W6JgJ8Jz8z5tTJ7X1mWq",
+      "firstName": "Regular",
+      "lastName": "User",
+      "role": "customer",
+      "isActive": true,
+      "createdAt": "2023-01-02T00:00:00.000Z",
+      "phone": "+502 8765 4321"
+    },
+    {
+      "id": 1743285723839,
+      "username": "karen1234",
+      "email": "karenpineda208@gmail.com",
+      "password": "$2a$12$1Au0q2Nj.NXv0B5O9F3gwuA5X8OAaYMT6TVmxHp58xlYTeYOZIfu2",
+      "firstName": "Karen",
+      "lastName": "Pineda",
+      "phone": "35590810",
+      "role": "admin",
+      "isActive": true,
+      "createdAt": "2025-03-29T22:02:03.839Z",
+      "updatedAt": "2025-03-29T22:02:03.839Z"
+    }
+  ]
+}

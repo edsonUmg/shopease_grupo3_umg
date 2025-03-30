@@ -1,0 +1,203 @@
+@import '../../user-management.styles.scss';
+
+.user-list-container {
+  padding: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .title {
+      font-size: 28px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+  }
+
+  .filter-toolbar {
+    margin-bottom: 24px;
+    padding: 16px 24px;
+    display: flex;
+    gap: 20px;
+    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    .search-field {
+      flex: 1;
+      
+      .mat-form-field-outline {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      
+      .mat-form-field-label {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      
+      .mat-input-element {
+        color: white;
+      }
+      
+      .mat-icon {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+
+  .table-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .mat-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    .mat-header-row {
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      height: 56px;
+
+      .mat-header-cell {
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      .mat-sort-header-arrow {
+        color: white;
+      }
+    }
+
+    .mat-row {
+      height: 52px;
+      transition: all 0.3s ease;
+
+      &:nth-child(even) {
+        background-color: #f8fafc;
+      }
+      
+      &:hover {
+        background-color: #eef2f7;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    .mat-cell {
+      color: #2c3e50;
+      font-size: 14px;
+      border-bottom: 1px solid #eaeff5;
+      padding: 0 16px;
+    }
+
+    .action-cell {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+
+      button {
+        min-width: 36px;
+        padding: 0 8px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  /* Estilos mejorados para los badges de rol */
+  .role-badge {
+    display: inline-block;
+    border-radius: 16px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 70px;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+
+    /* Colores para diferentes roles */
+    &.admin {
+      background-color: #e3f2fd;
+      color: #1976d2;
+      border: 1px solid #bbdefb;
+    }
+    
+    &.customer {
+      background-color: #e8f5e9;
+      color: #388e3c;
+      border: 1px solid #c8e6c9;
+    }
+    
+    &.editor {
+      background-color: #fff3e0;
+      color: #fb8c00;
+      border: 1px solid #ffe0b2;
+    }
+    
+    &.user {
+      background-color: #f3e5f5;
+      color: #8e24aa;
+      border: 1px solid #e1bee7;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    .mat-spinner {
+      circle {
+        stroke: #3498db;
+      }
+    }
+  }
+
+  /* Estilos para la paginación */
+  .mat-paginator {
+    margin-top: 0;
+    background-color: white;
+    border: 1px solid #eaeff5;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 12px 24px;
+  }
+
+  /* Efectos de transición para la tabla */
+  .mat-row {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+            "style": "scss",
+            "skipTests": true
         }
       },
       "root": "",
@@ -27,12 +28,18 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+                "src/assets",
+                "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.scss"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
-            "scripts": []
+              "scripts": [],
+              "stylePreprocessorOptions": {
+                "includePaths": ["src/styles"]
+              }
           },
           "configurations": {
             "production": {
@@ -48,7 +55,26 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+                "fileReplacements": [
+                  {
+                    "replace": "src/environments/environment.ts",
+                    "with": "src/environments/environment.prod.ts"
+                  }
+                ],
+                "outputHashing": "all",
+                "optimization": {
+                  "scripts": true,
+                  "styles": {
+                    "minify": true,
+                    "inlineCritical": false
+                  },
+                  "fonts": true
+                },
+                "sourceMap": false,
+                "namedChunks": false,
+                "extractLicenses": true,
+                "vendorChunk": false,
+                "buildOptimizer": true
             },
             "development": {
               "buildOptimizer": false,
@@ -63,12 +89,18 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+              "proxyConfig": "src/proxy.conf.json"
+            },
           "configurations": {
             "production": {
               "browserTarget": "shop-ease:build:production"
             },
             "development": {
-              "browserTarget": "shop-ease:build:development"
+                "browserTarget": "shop-ease:build:development",
+                "port": 4200,
+                "open": true,
+                "liveReload": true
             }
           },
           "defaultConfiguration": "development"
@@ -93,6 +125,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -102,6 +135,7 @@
     }
   },
   "cli": {
-    "analytics": "b45368e4-1a0c-490e-adaa-39694ddc58c6"
+      "analytics": "b45368e4-1a0c-490e-adaa-39694ddc58c6",
+      "defaultCollection": "@angular-eslint/schematics"
   }
 }
