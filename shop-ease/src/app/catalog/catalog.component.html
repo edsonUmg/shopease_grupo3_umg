@@ -1,2 +1,78 @@
 <router-outlet></router-outlet>
-<p>catalog works!</p>
+<div class="catalog-container">
+
+<p>
+  <!-- Nuevo contenedor para alinear contador y filtros -->
+  <div class="filters-container">
+    <div class="filters">
+      <h4>Filtros</h4>
+
+      <label>
+        Categoría:
+        <select [(ngModel)]="categoriaSeleccionada" (change)="aplicarFiltros()">
+          <option value="">Todas</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria">
+            {{ categoria }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Tipo de Uso:
+        <select [(ngModel)]="tipoUsoSeleccionado" (change)="aplicarFiltros()">
+          <option *ngFor="let tipo of tipoUsos" [value]="tipo">
+            {{ tipo }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Precio Mínimo:
+        <input type="number" [(ngModel)]="precioMin" (input)="aplicarFiltros()" /> 
+      </label>
+      <label>
+        Precio Máximo:
+        <input type="number" [(ngModel)]="precioMax" (input)="aplicarFiltros()" />
+      </label>
+
+      <label>
+        <input type="checkbox" [(ngModel)]="soloDisponibles" (change)="aplicarFiltros()" />   
+        Solo disponibles
+      </label>
+
+      <button (click)="limpiarFiltros()">Limpiar Filtros</button>
+    </div>
+
+    <!-- Contador de productos y selector de cantidad -->
+    <div class="product-count">
+      <p>Mostrando {{ productosFiltrados.length }} de {{ productos.length }} productos</p>
+      <label>
+        Mostrar:
+        <select [(ngModel)]="productosPorPagina" (change)="cambiarCantidadProductos()">
+          <option [value]="5">5</option>
+          <option [value]="10">10</option>
+          <option [value]="20">20</option>          
+          <option [value]="30">30</option>
+          <option [value]="productos.length">Todos</option> 
+        </select>
+        por página.
+      </label>
+    </div>
+  </div>
+
+  <!-- Lista de productos -->
+  <div class="product-list">
+    <div class="product-card" *ngFor="let product of productosFiltrados | slice:0:productosPorPagina">
+      <img [src]="product.imageUrl" alt="{{ product.name }}">
+      <h3><a [routerLink]="['/producto', product.id]">{{ product.name }}</a>
+      </h3>
+      <p><strong>Precio: ${{ product.price }}</strong></p>
+      <p>{{ product.availably }}</p>
+      <button (click)="agregarAlCarrito(product)" 
+        [disabled]="!product.available"
+        class="btn btn-dark">
+  🛒 Agregar al carrito
+</button>
+    </div>
+  </div>
+</div>
