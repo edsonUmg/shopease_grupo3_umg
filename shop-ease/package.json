@@ -7,18 +7,15 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev": "nodemon server.js",
     "server": "json-server --watch db.json --port 5000"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
-    "@angular/cdk": "^16.2.14",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
     "@angular/forms": "^16.2.0",
-    "@angular/material": "^16.2.14",
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
@@ -26,12 +23,7 @@
     "json-server": "^1.0.0-beta.3",
     "primeicons": "^7.0.0",
     "primeng": "^16.0.0",
-    "@fortawesome/fontawesome-free": "^6.7.2",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "json-server": "^1.0.0-beta.3",
     "rxjs": "~7.8.0",
-    "shop-ease": "file:",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
@@ -46,7 +38,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "nodemon": "^3.0.2",
     "typescript": "~5.1.3"
   }
 }

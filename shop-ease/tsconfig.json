@@ -18,10 +18,6 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "paths": {
-      "@app/*": ["src/app/*"],
-      "@env/*": ["src/environments/*"],
-    },
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",

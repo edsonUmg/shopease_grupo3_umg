@@ -25,7 +25,7 @@ export class CatalogComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data) => {
@@ -66,7 +66,7 @@ export class CatalogComponent implements OnInit {
   cambiarCantidadProductos() {
     this.aplicarFiltros(); // Recalcula los productos mostrados
   }
-
+  
 
   limpiarFiltros(): void {
     this.categoriaSeleccionada = '';
