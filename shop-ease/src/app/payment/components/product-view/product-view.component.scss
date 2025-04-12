@@ -1,0 +1,19 @@
+.product {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: rgb(231, 231, 231);
+
+  .description {
+    display: flex;
+    gap: 1rem;
+
+    img {
+      max-width: 70px;
+      max-height: 70px;
+    }
+  }
+}

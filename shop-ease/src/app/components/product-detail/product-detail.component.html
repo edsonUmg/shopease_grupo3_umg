@@ -1,0 +1,14 @@
+<div class="product-detail-container">
+  <img [src]="producto?.imageUrl" alt="{{ producto?.name }}">
+  <h2>{{ producto?.name }}</h2>
+  <p>{{ producto?.description }}</p>
+  <p><strong>Precio: ${{ producto?.price }}</strong></p>
+  <p [class.disponible]="producto?.available" [class.no-disponible]="!producto?.available">
+    {{ producto?.available ? 'Disponible' : 'No disponible' }}
+  </p>
+  <button (click)="producto ? agregarAlCarrito(producto) : null" 
+        [disabled]="!producto?.available"
+        class="btn btn-primary">
+  🛒 Agregar al carrito
+</button>
+</div>
